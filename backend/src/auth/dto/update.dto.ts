@@ -6,7 +6,8 @@ export class UpdateDto {
   id!: string;
 
   @IsEmail()
-  email!: string;
+  @IsNotEmpty()
+  username!: string;
 
   @IsString()
   password!: string;
