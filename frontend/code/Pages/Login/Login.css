@@ -100,34 +100,129 @@ body
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
+    backdrop-filter: blur(20px);
 }
 
 .login
 {
     height: 100vh;
-    width: 100%;
+    width: 100vw;
 
-    padding: 100px;
-
-    gap: 50px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    z-index: 0;
+    padding: 50px;
 }
 
-.login__container
-{
-    height: 100%;
-    width: fit-content;
+    .login__container
+    {
+        height: 100%;
+        width: 100%;
 
-    padding: 30px;
+        background-color: white;
 
-    backdrop-filter: blur(20px);
-    background-color: #ffffff1e;
+        display: flex;
+        gap: 20px;
+        
+        padding: 20px;
 
-    border: 1px solid white;
-    border-radius: 25px;
-}
+        border: none;
+        border-radius: 25px;
+    }
+
+        .login__content
+        {
+            width: 50%;
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+            .login__title
+            {
+                justify-self: start;
+
+                font-family: var(--font-headings);
+                font-size: var(--text-4xl);
+                font-weight: var(--font-weight);
+
+                color: var(--text);
+            }
+
+            .login__subtitle
+            {
+                font-family: var(--font-para);
+                font-weight: var(--font-weight);
+                font-size: var(--text-l);
+            }
+
+            .login__form
+            {
+                width: 100%;
+            }
+                .input-container
+                {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+
+                    padding: 30px;
+
+                    width: inherit;
+                    height: max-content;
+
+                    margin-top: 20px;
+                }
+
+                    .input__fields
+                    {
+                        min-height: 60px;
+                        width: 100%;
+
+                        padding: 20px;
+
+                        font-family: var(--font-subheadings);
+                        font-size: var(--text-m);
+                        font-weight: calc(var(--font-weight) + 100);
+
+                        color: #111827;
+                        background-color: #e9e9e9;
+
+                        border-radius: 50px;
+                        border: none;
+                    }
+
+                        .input__fields:active , .input__fields:focus
+                        {
+                            background-color: #e9e9e9;
+                        }
+
+
+                    .login-btn
+                    {
+                        width: 100%;
+                    }
+
+                    .create-account
+                    {
+                        font-size: var(--text-l);
+                        font-family: var(--font-para);
+
+                        justify-self: end;
+                    }
+
+        .login__image
+        {
+            height: 100%;
+            width: 50%;
+
+            background-color: #111827;
+            
+            border: none;
+            border-radius: 10px;
+
+            background-image: url("https://plus.unsplash.com/premium_photo-1707353402061-c31b6ba8562e?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+            background-repeat: no-repeat;
+            background-size:cover;
+            background-position: top center;
+        }
