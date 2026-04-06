@@ -13,6 +13,7 @@ import { AuthController } from './auth/auth.controller';
 import { AuthModule } from './auth/auth.module';
 
 import { User } from './entities/user.entity';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -44,6 +45,7 @@ import { User } from './entities/user.entity';
       }),
     }),
     AuthModule,
+    UsersModule,
   ],
   controllers: [AppController, AuthController],
   providers: [AppService, KeyStoreService, KeyRotationService],
