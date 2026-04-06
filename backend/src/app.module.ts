@@ -14,6 +14,9 @@ import { AuthModule } from './auth/auth.module';
 
 import { User } from './entities/user.entity';
 import { UsersModule } from './users/users.module';
+import { UsersService } from './users/users.service';
+import { AuthService } from './auth/auth.service';
+import { JwtService } from '@nestjs/jwt';
 
 @Module({
   imports: [
@@ -44,10 +47,18 @@ import { UsersModule } from './users/users.module';
         entities: [User],
       }),
     }),
+    TypeOrmModule.forFeature([User]),
     AuthModule,
     UsersModule,
   ],
   controllers: [AppController, AuthController],
-  providers: [AppService, KeyStoreService, KeyRotationService],
+  providers: [
+    AppService,
+    AuthService,
+    UsersService,
+    KeyStoreService,
+    KeyRotationService,
+    JwtService,
+  ],
 })
 export class AppModule {}
