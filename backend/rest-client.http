@@ -1,0 +1,53 @@
+### Get Hello World
+GET http://localhost:3000
+
+### Create an Account
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+  "username": "silly_user",
+  "password": "secret_\\>:3"
+}
+
+### Login as User
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "username": "silly_user",
+  "password": "secret_\\>:3"
+}
+
+### Refresh Token # This path doesn't work for now.
+POST http://localhost:3000/auth/refresh
+Content-Type: application/json
+
+{
+  "refreshToken": "5eb6e10b02f9a9a03049657d88c317a3dc83c78f05e670b1b7b745e33c8de1c8f56ec61b5a7064599b26ea52d6ddee843c32d54bee1a953849be1cc288043246"
+}
+
+### Update User
+PUT http://localhost:3000/auth/update
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEifQ.eyJzdWIiOiI4YWNmNjc5MS04NzEyLTQ2YTUtYTkwMy02MGY3NjcwMWU3NGEiLCJlbWFpbCI6InNpbGx5LnVzZXJAZW1haWwuY29tIiwiaWF0IjoxNzcxOTQyNTAxLCJleHAiOjE3NzE5NDM0MDF9.cBn3WjnjiTu9E1B4rpRd0-cv6nEO8aghytBeHe7kS0zBrXbLQLXfrmi-qcGfEf5oUXSF44HH5K0uIJld-6B8PFDEs54VgH1NpoMULoiFP68O3Ue67Cr_YpOzUVBa96Hnu2H6uncgl6t5YZ30gdgoS-f0gF5LN4fCeN2FuqAvTe1M86_THT4QKziatU4Sgomt7ZAkBSPdC0Ua11AurKvc8ziXvERLR3yfUwUOFzeTH-IjZpgkq3Pd9fPlHN6_mfD4_ei0s3uAFzzgvBSi_zZ2cUboN1RzuLYENzjQJQMijnabwyrTJGAfPJdxt0Ue9hwPxvfBBEuxNUw7Biznf_HvWw
+
+{
+  "id": "8acf6791-8712-46a5-a903-60f76701e74a",
+  "username": "silly_user",
+  "password": "secret_\\>:3"
+}
+
+### Delete User
+DELETE http://localhost:3000/auth/delete
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEifQ.eyJzdWIiOiI4YWNmNjc5MS04NzEyLTQ2YTUtYTkwMy02MGY3NjcwMWU3NGEiLCJlbWFpbCI6InNpbGx5LnVzZXJAZW1haWwuY29tIiwiaWF0IjoxNzcxOTQyNTAxLCJleHAiOjE3NzE5NDM0MDF9.cBn3WjnjiTu9E1B4rpRd0-cv6nEO8aghytBeHe7kS0zBrXbLQLXfrmi-qcGfEf5oUXSF44HH5K0uIJld-6B8PFDEs54VgH1NpoMULoiFP68O3Ue67Cr_YpOzUVBa96Hnu2H6uncgl6t5YZ30gdgoS-f0gF5LN4fCeN2FuqAvTe1M86_THT4QKziatU4Sgomt7ZAkBSPdC0Ua11AurKvc8ziXvERLR3yfUwUOFzeTH-IjZpgkq3Pd9fPlHN6_mfD4_ei0s3uAFzzgvBSi_zZ2cUboN1RzuLYENzjQJQMijnabwyrTJGAfPJdxt0Ue9hwPxvfBBEuxNUw7Biznf_HvWw
+
+{
+  "id": "8acf6791-8712-46a5-a903-60f76701e74a",
+  "password": "secret_\\>:3"
+}
+
+### Get Profile
+GET http://localhost:3000/auth/profile
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEifQ.eyJzdWIiOiI4YWNmNjc5MS04NzEyLTQ2YTUtYTkwMy02MGY3NjcwMWU3NGEiLCJlbWFpbCI6InNpbGx5LnVzZXJAZW1haWwuY29tIiwiaWF0IjoxNzcxOTQyNTAxLCJleHAiOjE3NzE5NDM0MDF9.cBn3WjnjiTu9E1B4rpRd0-cv6nEO8aghytBeHe7kS0zBrXbLQLXfrmi-qcGfEf5oUXSF44HH5K0uIJld-6B8PFDEs54VgH1NpoMULoiFP68O3Ue67Cr_YpOzUVBa96Hnu2H6uncgl6t5YZ30gdgoS-f0gF5LN4fCeN2FuqAvTe1M86_THT4QKziatU4Sgomt7ZAkBSPdC0Ua11AurKvc8ziXvERLR3yfUwUOFzeTH-IjZpgkq3Pd9fPlHN6_mfD4_ei0s3uAFzzgvBSi_zZ2cUboN1RzuLYENzjQJQMijnabwyrTJGAfPJdxt0Ue9hwPxvfBBEuxNUw7Biznf_HvWw
