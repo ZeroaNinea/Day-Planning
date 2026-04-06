@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 
 import { AuthService } from './auth.service';
+import { UsersService } from './users.service';
 import { KeyStoreService } from './key-store.service';
 import { JwtStrategy } from './jwt.strategy';
 import { KeyRotationService } from './key-rotation.service';
@@ -17,6 +18,12 @@ import { AuthController } from './auth.controller';
     }),
   ],
   controllers: [AuthController],
-  providers: [KeyRotationService, AuthService, KeyStoreService, JwtStrategy],
+  providers: [
+    KeyRotationService,
+    AuthService,
+    UsersService,
+    KeyStoreService,
+    JwtStrategy,
+  ],
 })
 export class AuthModule {}
