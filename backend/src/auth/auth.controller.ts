@@ -26,14 +26,14 @@ export class AuthController {
   ) {}
 
   @Post('signup')
-  async signup(@Body() { email, password }: SignupDto) {
-    return this.usersService.create({ email, password });
+  async signup(@Body() { username, password }: SignupDto) {
+    return this.usersService.create({ username, password });
   }
 
   @Put('update')
   @UseGuards(AuthGuard('jwt'))
-  async update(@Body() { id, email, password }: UpdateDto) {
-    return this.usersService.update({ id, email, password });
+  async update(@Body() { id, username, password }: UpdateDto) {
+    return this.usersService.update({ id, username, password });
   }
 
   @Delete('delete')
@@ -43,8 +43,8 @@ export class AuthController {
   }
 
   @Post('login')
-  async login(@Body() { email, password }: LoginDto) {
-    return this.authService.login({ email, password });
+  async login(@Body() { username, password }: LoginDto) {
+    return this.authService.login({ username, password });
   }
 
   @Get('profile')
