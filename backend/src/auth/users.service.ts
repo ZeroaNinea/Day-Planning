@@ -46,7 +46,7 @@ export class UsersService {
 
   async update({ id, username, password }: UpdateDto) {
     const user = await this.usersRepository.findOne({
-      where: { id },
+      where: { id: Number(id) },
     });
 
     if (!user) {
@@ -63,14 +63,14 @@ export class UsersService {
 
   async delete({ id, password }: DeleteDto) {
     const user = await this.usersRepository.findOne({
-      where: { id },
+      where: { id: Number(id) },
     });
 
     if (!user) {
       throw new NotFoundException(' X_X User not found.');
     }
 
-    const isValid = await bcrypt.compare(password, user.password);
+    const isValid = await bcrypt.compare(password, user.password || '');
 
     if (!isValid) {
       throw new UnauthorizedException(' X_X Invalid credentials.');
@@ -88,7 +88,7 @@ export class UsersService {
       throw new NotFoundException(' X_X User not found.');
     }
 
-    const isValid = await bcrypt.compare(password, user.password);
+    const isValid = await bcrypt.compare(password, user.password || '');
 
     if (!isValid) {
       throw new UnauthorizedException(' X_X Invalid credentials.');

@@ -8,6 +8,7 @@ import { User } from '../entities/user.entity';
 
 import { LoginDto } from './dto/login.dto';
 import { KeyStoreService } from './key-store.service';
+import { UsersService } from './users.service';
 
 @Injectable()
 export class AuthService {
@@ -18,6 +19,7 @@ export class AuthService {
     private userRepository: Repository<User>,
     private jwtService: JwtService,
     private keyStore: KeyStoreService,
+    private usersService: UsersService,
   ) {
     const { kid, privateKey } = this.keyStore.getCurrentPrivateKey();
     this.kid = kid;
@@ -26,16 +28,6 @@ export class AuthService {
 
   private async issueTokens(userId: string, email: string) {
     const payload = { sub: userId, email };
-
-    // access_token: await this.jwtService.signAsync(payload, {
-    //     privateKey: this.privateKey,
-    //     algorithm: 'RS256',
-    //     header: {
-    //       alg: 'RS256',
-    //       kid: this.kid,
-    //     },
-    //     expiresIn: '15m',
-    //   }),
 
     const accessToken = await this.jwtService.signAsync(payload, {
       privateKey: this.privateKey,
@@ -67,20 +59,6 @@ export class AuthService {
     if (!user) {
       throw new UnauthorizedException(' X_X Invalid credentials.');
     }
-
-    // const payload = { sub: user.id, email: user.email };
-
-    // return {
-    //   access_token: await this.jwtService.signAsync(payload, {
-    //     privateKey: this.privateKey,
-    //     algorithm: 'RS256',
-    //     header: {
-    //       alg: 'RS256',
-    //       kid: this.kid,
-    //     },
-    //     expiresIn: '15m',
-    //   }),
-    // };
 
     return this.issueTokens(user.id, user.email);
   }
