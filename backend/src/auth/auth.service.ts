@@ -1,10 +1,10 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import * as bcrypt from 'bcrypt';
+// import * as bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
 
-import { Repository } from 'typeorm';
-import { User } from '../entities/user.entity';
+// import { Repository } from 'typeorm';
+// import { User } from '../entities/user.entity';
 
 import { LoginDto } from './dto/login.dto';
 import { KeyStoreService } from './key-store.service';
@@ -16,7 +16,6 @@ export class AuthService {
   private privateKey: Buffer;
 
   constructor(
-    private userRepository: Repository<User>,
     private jwtService: JwtService,
     private keyStore: KeyStoreService,
     private usersService: UsersService,
@@ -40,15 +39,15 @@ export class AuthService {
     });
 
     const refreshToken = crypto.randomBytes(64).toString('hex');
-    const tokenHash = await bcrypt.hash(refreshToken, 12);
+    // const tokenHash = await bcrypt.hash(refreshToken, 12);
 
-    await this.prisma.refreshToken.create({
-      data: {
-        tokenHash,
-        userId,
-        expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000),
-      },
-    });
+    // await this.prisma.refreshToken.create({
+    //   data: {
+    //     tokenHash,
+    //     userId,
+    //     expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000),
+    //   },
+    // });
 
     return { access_token: accessToken, refresh_token: refreshToken };
   }
@@ -60,49 +59,49 @@ export class AuthService {
       throw new UnauthorizedException(' X_X Invalid credentials.');
     }
 
-    return this.issueTokens(user.id, user.email);
+    return this.issueTokens(String(user.id), user.username || '');
   }
 
-  async refresh(refreshToken: string) {
-    const tokens = await this.prisma.refreshToken.findMany();
+  // async refresh(refreshToken: string) {
+  //   const tokens = await this.prisma.refreshToken.findMany();
 
-    let validToken!: {
-      id: string;
-      createdAt: Date;
-      tokenHash: string;
-      userId: string;
-      expiresAt: Date;
-    };
+  //   let validToken!: {
+  //     id: string;
+  //     createdAt: Date;
+  //     tokenHash: string;
+  //     userId: string;
+  //     expiresAt: Date;
+  //   };
 
-    for (const tokenRecord of tokens) {
-      const match = await bcrypt.compare(refreshToken, tokenRecord.tokenHash);
-      if (match) {
-        validToken = tokenRecord;
-        break;
-      }
-    }
+  //   for (const tokenRecord of tokens) {
+  //     const match = await bcrypt.compare(refreshToken, tokenRecord.tokenHash);
+  //     if (match) {
+  //       validToken = tokenRecord;
+  //       break;
+  //     }
+  //   }
 
-    if (!validToken) {
-      throw new UnauthorizedException('Invalid refresh token');
-    }
+  //   if (!validToken) {
+  //     throw new UnauthorizedException('Invalid refresh token');
+  //   }
 
-    if (validToken.expiresAt < new Date()) {
-      throw new UnauthorizedException('Refresh token expired');
-    }
+  //   if (validToken.expiresAt < new Date()) {
+  //     throw new UnauthorizedException('Refresh token expired');
+  //   }
 
-    // Rotate refresh token.
-    await this.prisma.refreshToken.delete({
-      where: { id: validToken.id },
-    });
+  //   // Rotate refresh token.
+  //   await this.prisma.refreshToken.delete({
+  //     where: { id: validToken.id },
+  //   });
 
-    const user = await this.prisma.user.findUnique({
-      where: { id: validToken.userId },
-    });
+  //   const user = await this.prisma.user.findUnique({
+  //     where: { id: validToken.userId },
+  //   });
 
-    if (!user) {
-      throw new UnauthorizedException();
-    }
+  //   if (!user) {
+  //     throw new UnauthorizedException();
+  //   }
 
-    return this.issueTokens(user.id, user.email);
-  }
+  //   return this.issueTokens(user.id, user.email);
+  // }
 }

@@ -61,8 +61,8 @@ export class AuthController {
     return req.user;
   }
 
-  @Post('refresh')
-  async refresh(@Body('refreshToken') token: string) {
-    return this.authService.refresh(token);
-  }
+  // @Post('refresh')
+  // async refresh(@Body('refreshToken') token: string) {
+  //   return this.authService.refresh(token);
+  // }
 }
