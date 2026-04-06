@@ -12,6 +12,8 @@ import { AuthController } from './auth/auth.controller';
 
 import { AuthModule } from './auth/auth.module';
 
+import { User } from './entities/user.entity';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -38,6 +40,7 @@ import { AuthModule } from './auth/auth.module';
         database: configService.get<string>('DB_NAME'),
         autoLoadEntities: true,
         synchronize: true,
+        entities: [User],
       }),
     }),
     AuthModule,
