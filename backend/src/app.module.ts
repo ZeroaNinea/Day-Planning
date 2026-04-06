@@ -3,9 +3,13 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as Joi from 'joi';
 
-import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { KeyStoreService } from './auth/key-store.service';
+import { KeyRotationService } from './auth/key-rotation.service';
+
+import { AppController } from './app.controller';
 import { AuthController } from './auth/auth.controller';
+
 import { AuthModule } from './auth/auth.module';
 
 @Module({
@@ -39,6 +43,6 @@ import { AuthModule } from './auth/auth.module';
     AuthModule,
   ],
   controllers: [AppController, AuthController],
-  providers: [AppService],
+  providers: [AppService, KeyStoreService, KeyRotationService],
 })
 export class AppModule {}
