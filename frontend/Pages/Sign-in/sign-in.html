@@ -28,6 +28,7 @@
       href="https://fonts.googleapis.com/css2?family=Boldonse&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+    <script defer src="./sign-in.js"></script>
   </head>
 
   <body>
@@ -46,14 +47,14 @@
           </div>
 
           <!-- signup form -->
-          <form action="" class="signup__form">
+          <form method="POST" class="signup__form">
             <!-- group of input elements -->
             <div class="input-container">
               <!-- username input -->
               <input
                 class="input__user input__fields"
                 type="text"
-                name=""
+                name="username"
                 id=""
                 placeholder="Your Name"
                 required
@@ -63,7 +64,7 @@
               <input
                 class="input__email input__fields"
                 type="email"
-                name=""
+                name="email"
                 id=""
                 placeholder="Your Email Here"
                 required
@@ -73,7 +74,7 @@
               <input
                 class="input__password input__fields"
                 type="password"
-                name=""
+                name="password"
                 id=""
                 minlength="10"
                 placeholder="Password here"
