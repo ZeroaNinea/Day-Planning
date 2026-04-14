@@ -1,0 +1,130 @@
+/* Home page */
+.home
+{
+    height: 100vh;
+    width: 100%;
+
+    padding: 100px;
+
+    gap: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 0;
+
+    background-color: var(--bg);
+}
+
+    .home__content
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+        align-items: center;
+        z-index: 10;
+    }
+
+        .home__title
+        {
+            font-family: var(--font-headings);
+            font-weight: var(--font-weight);
+            font-size: 4rem;
+            color: var(--primary);
+            text-align: center;
+            line-height: 6rem;
+        }
+
+            .icons
+            {
+                height: 70px;
+                aspect-ratio: 1 / 1;
+                background-color: #443aff;
+                margin-bottom: -5px;
+                fill: white;
+                color: white;
+                stroke-width: 2px;
+                stroke-linecap: square;
+                padding: 15px;
+                border-radius: 50%;
+            }
+
+                .energy-icon
+                {
+                    padding: 10px;
+                    height: 70px;
+                    color: white;
+                    fill: white;
+                }
+
+        .home__subtitle
+        {
+            font-weight: var(--font-weight);
+            font-family: var(--font-subheadings);
+
+            color: #111827;
+        }
+
+        .home__para
+        {
+            font-family: var(--font-para);
+            font-size: var(--text-m);
+            font-weight: 400;
+
+            text-align: center;
+            max-width: 550px;
+
+            color: #11182770;
+        }
+
+        .images
+        {
+            position: absolute;
+            height: 150px;
+            border-radius: 50px;
+
+            aspect-ratio: 1 / 1;
+
+            opacity: 0.4;
+
+            z-index: 1;
+        }
+
+            .image-board
+            {
+                top: -20px;
+                right: 20%;
+
+                opacity: 0.2;
+
+                border-top-left-radius: 0px;
+                border-top-right-radius: 0px;
+            }
+
+            .image-cleaning
+            {
+                bottom: 0px;
+                left: 10%;
+
+                opacity: 0.5;
+
+                border-bottom-right-radius: 0px;
+                border-bottom-left-radius: 0px;
+
+                height: 200px;
+            }
+
+            .image-desk
+            {
+                right: 0px;
+                top: 60%;
+
+                height: 250px;
+
+                opacity: 0.82;
+
+                border-top-right-radius: 0px;
+                border-bottom-right-radius: 0px;
+            }

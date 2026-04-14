@@ -1,0 +1,115 @@
+*
+{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+/* Global utilities */
+:root
+{
+    /* global font */
+    --font-headings: 'Boldonse';
+    --font-subheadings: 'Poppins';
+    --font-para: 'Poppins';
+    --font-weight: 400;
+
+    /* global font sizings */
+    --text-xs: 0.75rem;    /* 12px */
+    --text-s: 0.875rem;   /* 14px */
+    --text-m: 1rem;       /* 16px */
+    --text-l: 1.125rem;   /* 18px */
+    --text-xl: 1.25rem;    /* 20px */
+    --text-2xl: 1.5rem;    /* 24px */
+    --text-3xl: 1.875rem;  /* 30px */
+    --text-4xl: 2.25rem;   /* 36px */
+    --text-5xl: 3rem;      /* 48px */
+
+    /* global line heights */
+    --leading-tight: 1.2;
+    --leading-normal: 1.5;
+
+    /* spacings */
+    --space-xs: 0.25rem;  /* 4px */
+    --space-s: 0.5rem;   /* 8px */
+    --space-m: 1rem;     /* 16px */
+    --space-l: 1.5rem;   /* 24px */
+    --space-xxl: 2rem;     /* 32px */
+
+    /* global colors */
+    --primary: #4F46E5;
+    --primary-light: #7770ff;
+    --bg: #F9FAFB;
+    --text: #111827;
+    --surface: #FFFFFF;
+
+    --success: #22C55E;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+    --info: #3B82F6;
+}
+
+.buttons
+{
+    height: fit-content;
+    width: fit-content;
+    
+    padding: var(--space-m);
+    padding-left: calc(var(--space-m) + 20px);
+    padding-right: calc(var(--space-m) + 20px);
+    
+    border: none;
+    border-radius: 50px;
+    
+    color: var(--surface);
+    background-image: linear-gradient(to right, var(--primary), var(--primary-light));
+    
+    font: 500 1rem 'Poppins';
+    
+    transition: all 200ms ease-in-out;
+    box-shadow: inset 0px 0px 3px white;
+}
+
+    .buttons:hover
+    {
+        background-image: linear-gradient(to left, var(--primary), #443aff);
+        box-shadow: 0px 5px 5px #9f9aff;
+        transition: all 200ms ease-in-out;
+        transform: translateY(-3px);
+        cursor: pointer;
+    }
+
+    .buttons:active
+    {
+        transform: none;
+        box-shadow: none;
+    }
+
+.highlight
+{
+    color: var(--primary);
+}
+
+a
+{
+    text-decoration: none;
+    color: inherit;
+}
+
+li
+{
+    list-style: none;
+    text-decoration: none;
+}
+
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+
+    width: 100%;
+    min-height: 100vh;
+}
