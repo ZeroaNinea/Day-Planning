@@ -17,10 +17,14 @@ form.addEventListener('submit', (e) => {
       email: formData.get('email'),
       password: formData.get('password'),
     }),
-  }).then((res) => {
-    console.log(res);
-    // window.location.href = '../Dashboard/Dashboard.html';
-  });
+  })
+    .then((res) => {
+      console.log(res);
+      // window.location.href = '../Dashboard/Dashboard.html';
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 
   // console.log(formData.get('username'));
   // console.log(formData.get('email'));
