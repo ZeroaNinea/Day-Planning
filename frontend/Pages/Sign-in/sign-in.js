@@ -19,16 +19,11 @@ form.addEventListener('submit', (e) => {
     }),
   })
     .then((res) => {
-      console.log(res);
-      // window.location.href = '../Dashboard/Dashboard.html';
+      if (res.ok) {
+        window.location.href = '../Dashboard/Dashboard.html';
+      }
     })
     .catch((err) => {
       console.error(err);
     });
-
-  // console.log(formData.get('username'));
-  // console.log(formData.get('email'));
-  // console.log(formData.get('password'));
-
-  // window.location.href = '../Dashboard/Dashboard.html';
 });
