@@ -26,8 +26,8 @@ export class AuthController {
   ) {}
 
   @Post('signup')
-  async signup(@Body() { username, password }: SignupDto) {
-    return this.usersService.create({ username, password });
+  async signup(@Body() { username, email, password }: SignupDto) {
+    return this.usersService.create({ username, email, password });
   }
 
   @Put('update')

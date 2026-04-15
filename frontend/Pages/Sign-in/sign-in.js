@@ -6,9 +6,25 @@ form.addEventListener('submit', (e) => {
 
   const formData = new FormData(form);
 
-  console.log(formData.get('username'));
-  console.log(formData.get('email'));
-  console.log(formData.get('password'));
+  // create an account
+  fetch('http://localhost:3000/auth/signup', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      username: formData.get('username'),
+      email: formData.get('email'),
+      password: formData.get('password'),
+    }),
+  }).then((res) => {
+    console.log(res);
+    // window.location.href = '../Dashboard/Dashboard.html';
+  });
+
+  // console.log(formData.get('username'));
+  // console.log(formData.get('email'));
+  // console.log(formData.get('password'));
 
   // window.location.href = '../Dashboard/Dashboard.html';
 });
