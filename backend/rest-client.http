@@ -8,7 +8,7 @@ Content-Type: application/json
 {
   "username": "silly_user",
   "email": "silly_user@email.com",
-  "password": "secret_\\>:3"
+  "password": "secret_\\\\>:3"
 }
 
 ### Login as User
@@ -17,7 +17,7 @@ Content-Type: application/json
 
 {
   "email": "silly_user@email.com",
-  "password": "secret_\\>:3"
+  "password": "secret_\\\\>:3"
 }
 
 ### Refresh Token # This path doesn't work for now.

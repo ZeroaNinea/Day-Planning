@@ -17,11 +17,14 @@ form.addEventListener('submit', (e) => {
       password: formData.get('password'),
     }),
   })
-    .then((res) => {
-      console.log(res);
-      // if (res.ok) {
-      //   window.location.href = '../Dashboard/Dashboard.html';
-      // }
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+
+      // Save the tokens in the local storage.
+      localStorage.setItem('access_token', data.access_token);
+      localStorage.setItem('refresh_token', data.refresh_token);
+      window.location.href = '../Dashboard/Dashboard.html';
     })
     .catch((err) => {
       console.error(err);
