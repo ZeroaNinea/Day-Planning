@@ -18,9 +18,10 @@ form.addEventListener('submit', (e) => {
     }),
   })
     .then((res) => {
-      if (res.ok) {
-        window.location.href = '../Dashboard/Dashboard.html';
-      }
+      console.log(res);
+      // if (res.ok) {
+      //   window.location.href = '../Dashboard/Dashboard.html';
+      // }
     })
     .catch((err) => {
       console.error(err);
