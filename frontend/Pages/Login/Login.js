@@ -1,4 +1,4 @@
-const form = document.querySelector('.signup__form');
+const form = document.querySelector('.login__form');
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -6,21 +6,20 @@ form.addEventListener('submit', (e) => {
 
   const formData = new FormData(form);
 
-  // Create an account.
-  fetch('http://localhost:3000/auth/signup', {
+  // Login into the account.
+  fetch('http://localhost:3000/auth/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      username: formData.get('username'),
       email: formData.get('email'),
       password: formData.get('password'),
     }),
   })
     .then((res) => {
       if (res.ok) {
-        window.location.href = '../Login/Login.html';
+        window.location.href = '../Dashboard/Dashboard.html';
       }
     })
     .catch((err) => {
