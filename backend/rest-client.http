@@ -7,7 +7,8 @@ Content-Type: application/json
 
 {
   "username": "silly_user",
-  "password": "secret_\\>:3"
+  "email": "silly_user@email.com",
+  "password": "secret_\\\\>:3"
 }
 
 ### Login as User
@@ -15,8 +16,8 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-  "username": "silly_user",
-  "password": "secret_\\>:3"
+  "email": "silly_user@email.com",
+  "password": "secret_\\\\>:3"
 }
 
 ### Refresh Token # This path doesn't work for now.
@@ -35,7 +36,7 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEifQ.eyJzdWI
 {
   "id": "8acf6791-8712-46a5-a903-60f76701e74a",
   "username": "silly_user",
-  "password": "secret_\\>:3"
+  "password": "secret_\\\\>:3"
 }
 
 ### Delete User
@@ -45,7 +46,7 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEifQ.eyJzdWI
 
 {
   "id": "8acf6791-8712-46a5-a903-60f76701e74a",
-  "password": "secret_\\>:3"
+  "password": "secret_\\\\>:3"
 }
 
 ### Get Profile

@@ -26,8 +26,8 @@ export class AuthController {
   ) {}
 
   @Post('signup')
-  async signup(@Body() { username, password }: SignupDto) {
-    return this.usersService.create({ username, password });
+  async signup(@Body() { username, email, password }: SignupDto) {
+    return this.usersService.create({ username, email, password });
   }
 
   @Put('update')
@@ -43,8 +43,8 @@ export class AuthController {
   }
 
   @Post('login')
-  async login(@Body() { username, password }: LoginDto) {
-    return this.authService.login({ username, password });
+  async login(@Body() { email, password }: LoginDto) {
+    return this.authService.login({ email, password });
   }
 
   @Get('profile')

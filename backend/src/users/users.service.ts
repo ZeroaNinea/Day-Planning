@@ -27,7 +27,13 @@ export class UsersService {
     });
   }
 
-  async create({ username, password }: SignupDto) {
+  async findByEmail(email: string) {
+    return this.usersRepository.findOne({
+      where: { email },
+    });
+  }
+
+  async create({ username, email, password }: SignupDto) {
     const existingUser = await this.findByUsername(username);
 
     if (existingUser) {
@@ -38,6 +44,7 @@ export class UsersService {
 
     const user = this.usersRepository.create({
       username,
+      email,
       password: hash,
     });
 
@@ -81,8 +88,8 @@ export class UsersService {
     return { message: 'User deleted.' };
   }
 
-  async validateUser({ username, password }: LoginDto) {
-    const user = await this.findByUsername(username);
+  async validateUser({ email, password }: LoginDto) {
+    const user = await this.findByEmail(email);
 
     if (!user) {
       throw new NotFoundException(' X_X User not found.');

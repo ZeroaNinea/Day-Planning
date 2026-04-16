@@ -6,9 +6,24 @@ form.addEventListener('submit', (e) => {
 
   const formData = new FormData(form);
 
-  console.log(formData.get('username'));
-  console.log(formData.get('email'));
-  console.log(formData.get('password'));
-
-  // window.location.href = '../Dashboard/Dashboard.html';
+  // Create an account.
+  fetch('http://localhost:3000/auth/signup', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      username: formData.get('username'),
+      email: formData.get('email'),
+      password: formData.get('password'),
+    }),
+  })
+    .then((res) => {
+      if (res.ok) {
+        window.location.href = '../Login/Login.html';
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 });
