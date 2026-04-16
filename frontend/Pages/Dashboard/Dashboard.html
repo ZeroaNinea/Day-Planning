@@ -29,9 +29,79 @@
       href="https://fonts.googleapis.com/css2?family=Boldonse&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+
   </head>
 
   <body>
-    <h1>Dashboard</h1>
+
+    <aside class="sidebar">
+      
+      <header class="sidebar__header">
+        
+        <img class="header-logo" src="../../Media/Logo/Day-Manager-icon.png" alt="Daymanager Logo">
+        
+        <button class="sidebar-toggle" id="sidebar-toggle">
+          <span class="material-symbols-rounded sidebar-toggle-icon">chevron_left</span>
+        </button>
+      
+      </header>
+
+      <div class="sidebar__content">
+        
+        <ul class="menu-list">
+          
+          <li class="menu-item">
+            
+            <a href="#" class="dashboard-link menu-links">
+          
+              <span class="dashboard-icon material-symbols-rounded">dashboard</span>
+              <span class="dashboard-label menu-labels">Dashboard</span>
+          
+            </a>
+          
+          </li>
+          
+          <li class="menu-item">
+            
+            <a href="#" class="tasks-link menu-links">
+          
+              <span class="tasks-link material-symbols-rounded">inventory</span>
+              <span class="tasks-link-label menu-labels">Tasks</span>
+          
+            </a>
+          
+          </li>
+          
+          <li class="menu-item">
+            
+            <a href="#" class="calender-link menu-links">
+          
+              <span class="calender-icon material-symbols-rounded">calendar_month</span>
+              <span class="calender-label menu-labels">Calender</span>
+          
+            </a>
+          
+          </li>
+          
+          <li class="menu-item">
+            
+            <a href="#" class="analytics-link menu-links">
+          
+              <span class="analytics-icon material-symbols-rounded">leaderboard</span>
+              <span class="analytics-label menu-labels">Analytics</span>
+          
+            </a>
+          
+          </li>
+          
+        </ul>
+      
+      </div>
+    
+    </aside>
+
+    <script src="Dashboard.js"></script>
   </body>
 </html>
