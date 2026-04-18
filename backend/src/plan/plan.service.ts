@@ -13,7 +13,7 @@ export class PlanService {
     private readonly planRepository: Repository<Plan>,
   ) {}
 
-  create(userId: number, tasks: Task[]) {
+  async create(userId: number, tasks: Task[]) {
     const plan = this.planRepository.create({
       user: { id: userId },
       date: new Date().toISOString().split('T')[0],
