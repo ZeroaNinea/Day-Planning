@@ -4,7 +4,10 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
+
+import { Plan } from './plan.entity';
 
 export enum UserRole {
   ADMIN = 'admin',
@@ -24,6 +27,9 @@ export class User {
 
   @Column()
   password?: string;
+
+  @OneToMany(() => Plan, (plan) => plan.user)
+  plans?: Plan[];
 
   @CreateDateColumn()
   createdAt?: Date;
