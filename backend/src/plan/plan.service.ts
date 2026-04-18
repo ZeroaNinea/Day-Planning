@@ -8,6 +8,7 @@ import { Repository } from 'typeorm';
 
 import { Plan } from '../entities/plan.entity';
 import { Task } from '../../types/task.alias';
+import { TaskDto } from './dto/task.dto';
 
 @Injectable()
 export class PlanService {
@@ -16,8 +17,8 @@ export class PlanService {
     private readonly planRepository: Repository<Plan>,
   ) {}
 
-  private validateTasks(tasks: Task[]) {
-    if (!tasks.length) {
+  private validateTasks(tasks?: TaskDto[]) {
+    if (!tasks?.length) {
       throw new BadRequestException(' X_X Plan must contain tasks.');
     }
 
@@ -31,7 +32,7 @@ export class PlanService {
     }
   }
 
-  async create(userId: number, tasks: Task[]) {
+  async create(userId: number, tasks: TaskDto[] | undefined) {
     this.validateTasks(tasks);
 
     const plan = this.planRepository.create({
