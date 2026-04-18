@@ -7,6 +7,7 @@ import {
 } from 'typeorm';
 
 import { User } from './user.entity';
+import { Task } from '../../types/task.alias';
 
 @Entity()
 export class Plan {
@@ -20,11 +21,7 @@ export class Plan {
   date?: string;
 
   @Column({ type: 'json' })
-  tasks?: {
-    title: string;
-    start: string;
-    end: string;
-  }[];
+  tasks?: Task[];
 
   @ManyToOne(() => User, (user) => user.id, { onDelete: 'CASCADE' })
   user?: User;
