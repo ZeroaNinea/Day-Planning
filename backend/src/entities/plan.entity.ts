@@ -14,6 +14,9 @@ export class Plan {
   id?: number;
 
   @Column()
+  title?: string;
+
+  @Column()
   date?: string;
 
   @Column({ type: 'json' })
