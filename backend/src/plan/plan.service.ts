@@ -25,6 +25,15 @@ export class PlanService {
       throw new BadRequestException(' X_X Plan must contain tasks.');
     }
 
+    const totalDuration = tasks.reduce(
+      (sum, task) => sum + (task.duration ?? 0),
+      0,
+    );
+
+    if (totalDuration > 24 * 60) {
+      throw new BadRequestException(' X_X Tasks exceed one day.');
+    }
+
     const plan = this.planRepository.create({
       user: { id: userId },
       date: new Date().toISOString().split('T')[0],
@@ -38,6 +47,15 @@ export class PlanService {
     const plan = await this.planRepository.findOne({
       where: { id, user: { id: userId } },
     });
+
+    const totalDuration = tasks.reduce(
+      (sum, task) => sum + (task.duration ?? 0),
+      0,
+    );
+
+    if (totalDuration > 24 * 60) {
+      throw new BadRequestException(' X_X Tasks exceed one day.');
+    }
 
     if (!plan) {
       throw new NotFoundException(' X_X Plan not found.');

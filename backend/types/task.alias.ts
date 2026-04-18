@@ -3,6 +3,5 @@ export type Task = {
   title: string;
   description: string;
   isCompleted: boolean;
-  start: string;
-  end: string;
+  duration: number; // In minutes.
 };
