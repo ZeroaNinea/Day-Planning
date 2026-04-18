@@ -7,7 +7,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 import { Plan } from '../entities/plan.entity';
-import { Task } from '../../types/task.alias';
 import { TaskDto } from './dto/task.dto';
 
 @Injectable()
@@ -44,7 +43,7 @@ export class PlanService {
     return this.planRepository.save(plan);
   }
 
-  async update(id: number, userId: number, tasks: Task[]) {
+  async update(id: number, userId: number, tasks: TaskDto[]) {
     const plan = await this.planRepository.findOne({
       where: { id, user: { id: userId } },
     });
