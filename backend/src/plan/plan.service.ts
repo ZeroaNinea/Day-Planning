@@ -16,10 +16,6 @@ export class PlanService {
     private readonly planRepository: Repository<Plan>,
   ) {}
 
-  async findAll(userId: number) {
-    return this.planRepository.find({ where: { user: { id: userId } } });
-  }
-
   async create(userId: number, tasks: Task[]) {
     if (!tasks.length) {
       throw new BadRequestException(' X_X Plan must contain tasks.');
