@@ -16,7 +16,7 @@ export class PlanService {
     private readonly planRepository: Repository<Plan>,
   ) {}
 
-  async create(userId: number, tasks: Task[]) {
+  private validateTasks(tasks: Task[]) {
     if (!tasks.length) {
       throw new BadRequestException(' X_X Plan must contain tasks.');
     }
@@ -29,6 +29,10 @@ export class PlanService {
     if (totalDuration > 24 * 60) {
       throw new BadRequestException(' X_X Tasks exceed one day.');
     }
+  }
+
+  async create(userId: number, tasks: Task[]) {
+    this.validateTasks(tasks);
 
     const plan = this.planRepository.create({
       user: { id: userId },
@@ -44,14 +48,7 @@ export class PlanService {
       where: { id, user: { id: userId } },
     });
 
-    const totalDuration = tasks.reduce(
-      (sum, task) => sum + (task.duration ?? 0),
-      0,
-    );
-
-    if (totalDuration > 24 * 60) {
-      throw new BadRequestException(' X_X Tasks exceed one day.');
-    }
+    this.validateTasks(tasks);
 
     if (!plan) {
       throw new NotFoundException(' X_X Plan not found.');
@@ -78,9 +75,13 @@ export class PlanService {
     return this.planRepository.find({ where: { user: { id: userId } } });
   }
 
-  async delete(userId: number, plan: Plan) {
-    if (plan.user?.id !== userId) {
-      throw new BadRequestException(' X_X You can only delete your own plans.');
+  async delete(id: number, userId: number) {
+    const plan = await this.planRepository.findOne({
+      where: { id, user: { id: userId } },
+    });
+
+    if (!plan) {
+      throw new NotFoundException(' X_X Plan not found.');
     }
 
     await this.planRepository.remove(plan);
