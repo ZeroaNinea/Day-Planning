@@ -78,10 +78,7 @@ export class PlanService {
     return this.planRepository.find({ where: { user: { id: userId } } });
   }
 
-  async delete(id: number, userId: number) {
-    await this.planRepository.delete({
-      id,
-      user: { id: userId },
-    });
+  async delete(plan: Plan) {
+    await this.planRepository.remove(plan);
   }
 }
