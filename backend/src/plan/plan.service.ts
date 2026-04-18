@@ -78,7 +78,11 @@ export class PlanService {
     return this.planRepository.find({ where: { user: { id: userId } } });
   }
 
-  async delete(plan: Plan) {
+  async delete(userId: number, plan: Plan) {
+    if (plan.user?.id !== userId) {
+      throw new BadRequestException(' X_X You can only delete your own plans.');
+    }
+
     await this.planRepository.remove(plan);
   }
 }
