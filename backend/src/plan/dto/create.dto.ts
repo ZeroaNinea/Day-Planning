@@ -6,5 +6,5 @@ export class CreateDto {
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => TaskDto)
-  tasks?: TaskDto[];
+  tasks!: TaskDto[];
 }

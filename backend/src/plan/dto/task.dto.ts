@@ -3,17 +3,17 @@ import { IsBoolean, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 export class TaskDto {
   @IsNotEmpty()
   @IsString()
-  title?: string;
+  title!: string;
 
   @IsString()
   @IsNotEmpty()
-  description?: string;
+  description!: string;
 
   @IsNotEmpty()
   @IsBoolean()
-  isCompleted?: boolean;
+  isCompleted!: boolean;
 
   @IsNotEmpty()
   @IsNumber()
-  duration?: number; // In minutes.
+  duration!: number; // In minutes.
 }

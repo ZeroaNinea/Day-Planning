@@ -12,20 +12,20 @@ import { TaskDto } from '../plan/dto/task.dto';
 @Entity()
 export class Plan {
   @PrimaryGeneratedColumn()
-  id?: number;
+  id!: number;
 
   @Column()
-  title?: string;
+  title!: string;
 
   @Column()
-  date?: string;
+  date!: string;
 
   @Column({ type: 'json' })
-  tasks?: TaskDto[];
+  tasks!: TaskDto[];
 
   @ManyToOne(() => User, (user) => user.id, { onDelete: 'CASCADE' })
-  user?: User;
+  user!: User;
 
   @CreateDateColumn()
-  createdAt?: Date;
+  createdAt!: Date;
 }

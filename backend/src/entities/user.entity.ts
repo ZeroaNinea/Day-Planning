@@ -17,23 +17,23 @@ export enum UserRole {
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
-  id?: number;
+  id!: number;
 
   @Column({ unique: true })
-  username?: string;
+  username!: string;
 
   @Column({ unique: true })
-  email?: string;
+  email!: string;
 
   @Column()
-  password?: string;
+  password!: string;
 
   @OneToMany(() => Plan, (plan) => plan.user)
-  plans?: Plan[];
+  plans!: Plan[];
 
   @CreateDateColumn()
-  createdAt?: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn()
-  updatedAt?: Date;
+  updatedAt!: Date;
 }
