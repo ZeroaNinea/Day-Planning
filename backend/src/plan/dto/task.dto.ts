@@ -16,4 +16,8 @@ export class TaskDto {
   @IsNotEmpty()
   @IsNumber()
   duration!: number; // In minutes.
+
+  @IsNotEmpty()
+  @IsString()
+  effort!: 'low' | 'medium' | 'high';
 }
