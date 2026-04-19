@@ -31,11 +31,11 @@ export class TaskDto {
   @IsOptional()
   priority?: number;
 
-  @IsNumber()
+  @IsString()
   @IsOptional()
   start?: string;
 
-  @IsNumber()
+  @IsString()
   @IsOptional()
   end?: string;
 }
