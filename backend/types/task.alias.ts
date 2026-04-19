@@ -5,4 +5,5 @@ export type Task = {
   isCompleted: boolean;
   duration: number; // In minutes.
   effort: 'low' | 'medium' | 'high';
+  priority?: number;
 };

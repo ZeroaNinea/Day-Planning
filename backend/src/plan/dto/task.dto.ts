@@ -20,4 +20,7 @@ export class TaskDto {
   @IsNotEmpty()
   @IsString()
   effort!: 'low' | 'medium' | 'high';
+
+  @IsNumber()
+  priority?: number;
 }
