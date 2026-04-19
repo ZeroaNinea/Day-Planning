@@ -11,6 +11,16 @@ import { TaskDto } from './dto/task.dto';
 
 @Injectable()
 export class PlanService {
+  energySlots: {
+    start: string;
+    end: string;
+    level: 'low' | 'medium' | 'high';
+  }[] = [
+    { start: '09:00', end: '12:00', level: 'high' },
+    { start: '12:00', end: '18:00', level: 'medium' },
+    { start: '18:00', end: '22:00', level: 'low' },
+  ];
+
   constructor(
     @InjectRepository(Plan)
     private readonly planRepository: Repository<Plan>,
