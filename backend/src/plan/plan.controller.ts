@@ -24,6 +24,7 @@ export class PlanController {
 
   @Post('create')
   async create(@CurrentUser('sub') userId: number, @Body() dto: CreateDto) {
+    console.log('create called', userId, dto);
     return this.planService.create(userId, dto.tasks);
   }
 
@@ -37,6 +38,7 @@ export class PlanController {
 
   @Get('read-all')
   async readAll(@CurrentUser('sub') userId: number) {
+    console.log('read-all called', userId);
     return this.planService.readAll(userId);
   }
 
