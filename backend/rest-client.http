@@ -56,7 +56,7 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjIwMjYtMDQtMT
 ### Create a New Plan
 POST http://localhost:3000/plan/create
 Content-Type: application/json
-Authorrization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjIwMjYtMDQtMTkifQ.eyJzdWIiOiIxIiwiZW1haWwiOiJzaWxseV91c2VyIiwiaWF0IjoxNzc2NjA4MTQ4LCJleHAiOjE3NzY2MDkwNDh9.prYqrBjfgIrKeAnxhFr-Y6Tml-nqs1_AdntTOXG1QDGoIt13Ps67fCjtRg7g7U1ZzgS2cey__HS_37leRkIJ2Ym1LDHlA_x0Fi2_RM0sVrUC29eIhDYPZ04ThkA27TVLdGaRKvcIw345ygBSgLInFsgrBo7NVEw9Y-PHxbj6wfcBrxAZ6d_PCkbtQ6D26WUieNegPHudH6jr1FbUI8Ox4c9z-WydYhJ98eu2zlbc33g_h2i_R5PNMQlBmv6U42X0mcIpUFHwu7XMM85eJDiu9hposAh0w6AecizkCDEnCG4L9gLePuM0ErSh0eXWJizz-7I5NvabfjLIwZyM-HLNFQ
+Authorrization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjIwMjYtMDQtMTkifQ.eyJzdWIiOiIxIiwiZW1haWwiOiJzaWxseV91c2VyIiwiaWF0IjoxNzc2NjEwMTg4LCJleHAiOjE3NzY2MTEwODh9.Jor8u3C7l-0fF4wCHDuTihtC6tRqfmecFWiPui708fEY7st1YE1jsn7XyJ2Gq2L-Xuv37UTJmorT4Z03PPu_ul3zJ1nFmWreVOTgm8c0DBdQEjr2agUIgMhukSotiEu5UhxlflMDNXL6OUSOKqS5cSU6ryTdxjIuaIKL5vdLANKh1Z2KyowDgTuhoe6MmUC5lwxVM-wSZPwow4NoccTpB0IygOT-tyw610VH2MwNV0jtbGrVdgUELvjED7jOeraUADyoXLVmQG0uGmsSb371W6JZR0OSqpSQl_U862uPVadrvE5J5n07kFBtg038UDXRoQ9IMI7HWN2_-KIm9_nmkw
 
 {
   "title": "My Plan",
@@ -64,28 +64,22 @@ Authorrization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjIwMjYtMDQtM
     {
       "title": "Task 1",
       "description": "Description for Task 1",
-      "startTime": "09:00",
-      "endTime": "10:00",
       "effort": "low",
-      "priority": "medium",
+      "duration": 20,
       "isCompleted": false
     },
     {
       "title": "Task 2",
       "description": "Description for Task 2",
-      "startTime": "10:00",
-      "endTime": "11:00",
+      "duration": 30,
       "effort": "medium",
-      "priority": "high",
       "isCompleted": false
     },
     {
       "title": "Task 3",
       "description": "Description for Task 3",
-      "startTime": "11:00",
-      "endTime": "12:00",
       "effort": "high",
-      "priority": "low",
+      "duration": 50,
       "isCompleted": false
     }
   ]
@@ -93,4 +87,4 @@ Authorrization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjIwMjYtMDQtM
 
 ### Read All Plans
 GET http://localhost:3000/plan/read-all
-Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjIwMjYtMDQtMTkifQ.eyJzdWIiOiIxIiwiZW1haWwiOiJzaWxseV91c2VyIiwiaWF0IjoxNzc2NjA4MTQ4LCJleHAiOjE3NzY2MDkwNDh9.prYqrBjfgIrKeAnxhFr-Y6Tml-nqs1_AdntTOXG1QDGoIt13Ps67fCjtRg7g7U1ZzgS2cey__HS_37leRkIJ2Ym1LDHlA_x0Fi2_RM0sVrUC29eIhDYPZ04ThkA27TVLdGaRKvcIw345ygBSgLInFsgrBo7NVEw9Y-PHxbj6wfcBrxAZ6d_PCkbtQ6D26WUieNegPHudH6jr1FbUI8Ox4c9z-WydYhJ98eu2zlbc33g_h2i_R5PNMQlBmv6U42X0mcIpUFHwu7XMM85eJDiu9hposAh0w6AecizkCDEnCG4L9gLePuM0ErSh0eXWJizz-7I5NvabfjLIwZyM-HLNFQ
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjIwMjYtMDQtMTkifQ.eyJzdWIiOiIxIiwiZW1haWwiOiJzaWxseV91c2VyIiwiaWF0IjoxNzc2NjEwMTg4LCJleHAiOjE3NzY2MTEwODh9.Jor8u3C7l-0fF4wCHDuTihtC6tRqfmecFWiPui708fEY7st1YE1jsn7XyJ2Gq2L-Xuv37UTJmorT4Z03PPu_ul3zJ1nFmWreVOTgm8c0DBdQEjr2agUIgMhukSotiEu5UhxlflMDNXL6OUSOKqS5cSU6ryTdxjIuaIKL5vdLANKh1Z2KyowDgTuhoe6MmUC5lwxVM-wSZPwow4NoccTpB0IygOT-tyw610VH2MwNV0jtbGrVdgUELvjED7jOeraUADyoXLVmQG0uGmsSb371W6JZR0OSqpSQl_U862uPVadrvE5J5n07kFBtg038UDXRoQ9IMI7HWN2_-KIm9_nmkw
