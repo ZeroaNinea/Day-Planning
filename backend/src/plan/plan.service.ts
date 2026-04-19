@@ -9,18 +9,16 @@ import { Repository } from 'typeorm';
 import { Plan } from '../entities/plan.entity';
 import { TaskDto } from './dto/task.dto';
 
+type Energy = 'low' | 'medium' | 'high';
+
+type TimeSlot = {
+  start: number; // minutes
+  end: number;
+  energy: Energy;
+};
+
 @Injectable()
 export class PlanService {
-  energySlots: {
-    start: string;
-    end: string;
-    level: 'low' | 'medium' | 'high';
-  }[] = [
-    { start: '09:00', end: '12:00', level: 'high' },
-    { start: '12:00', end: '18:00', level: 'medium' },
-    { start: '18:00', end: '22:00', level: 'low' },
-  ];
-
   constructor(
     @InjectRepository(Plan)
     private readonly planRepository: Repository<Plan>,
@@ -39,6 +37,29 @@ export class PlanService {
     if (totalDuration > 24 * 60) {
       throw new BadRequestException(' X_X Tasks exceed one day.');
     }
+  }
+
+  private toTimeString(minutes: number): string {
+    const h = Math.floor(minutes / 60)
+      .toString()
+      .padStart(2, '0');
+    const m = (minutes % 60).toString().padStart(2, '0');
+    return `${h}:${m}`;
+  }
+
+  private getEnergySlots(): TimeSlot[] {
+    return [
+      { start: 9 * 60, end: 12 * 60, energy: 'high' },
+      { start: 12 * 60, end: 18 * 60, energy: 'medium' },
+      { start: 18 * 60, end: 22 * 60, energy: 'low' },
+    ];
+  }
+
+  private matchesEnergy(task: TaskDto, slot: TimeSlot): boolean {
+    if (task.effort === 'low') return true;
+    if (task.effort === 'medium') return slot.energy !== 'low';
+    if (task.effort === 'high') return slot.energy === 'high';
+    return false;
   }
 
   async create(userId: number, tasks: TaskDto[] | undefined) {
@@ -95,5 +116,86 @@ export class PlanService {
     }
 
     await this.planRepository.remove(plan);
+  }
+
+  async autoSchedule(id: number, userId: number) {
+    const plan = await this.planRepository.findOne({
+      where: { id, user: { id: userId } },
+    });
+
+    if (!plan) {
+      throw new NotFoundException(' X_X Plan not found.');
+    }
+
+    this.validateTasks(plan.tasks);
+
+    const tasks = [...plan.tasks];
+
+    // Sort: priority DESC, effort DESC
+    const effortOrder = { high: 3, medium: 2, low: 1 };
+
+    tasks.sort((a, b) => {
+      const pA = a.priority ?? 0;
+      const pB = b.priority ?? 0;
+
+      if (pA !== pB) return pB - pA;
+
+      return effortOrder[b.effort] - effortOrder[a.effort];
+    });
+
+    const slots = this.getEnergySlots();
+    const scheduled: TaskDto[] & { start: string; end: string }[] = [];
+
+    for (const task of tasks) {
+      let placed = false;
+
+      // 1. Try matching energy slot first.
+      for (const slot of slots) {
+        if (
+          this.matchesEnergy(task, slot) &&
+          slot.end - slot.start >= task.duration
+        ) {
+          const start = slot.start;
+          const end = start + task.duration;
+
+          scheduled.push({
+            ...task,
+            start: this.toTimeString(start),
+            end: this.toTimeString(end),
+          });
+
+          slot.start = end; // Shrink slot.
+          placed = true;
+          break;
+        }
+      }
+
+      // 2. Fallback: place anywhere.
+      if (!placed) {
+        for (const slot of slots) {
+          if (slot.end - slot.start >= task.duration) {
+            const start = slot.start;
+            const end = start + task.duration;
+
+            scheduled.push({
+              ...task,
+              start: this.toTimeString(start),
+              end: this.toTimeString(end),
+            });
+
+            slot.start = end;
+            placed = true;
+            break;
+          }
+        }
+      }
+
+      // 3. If still not placed — skip.
+      // if (!placed) {}
+    }
+
+    plan.tasks = scheduled;
+
+    return this.planRepository.save(plan);
   }
 }
