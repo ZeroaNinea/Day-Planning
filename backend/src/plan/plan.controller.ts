@@ -42,9 +42,9 @@ export class PlanController {
     return this.planService.readAll(userId);
   }
 
-  @Get('read')
-  async read(@CurrentUser('sub') userId: number, @Body() dto: { id: number }) {
-    return this.planService.read(userId, dto.id);
+  @Get('read/:id')
+  async read(@CurrentUser('sub') userId: number, @Param('id') id: string) {
+    return this.planService.read(userId, Number(id));
   }
 
   @Delete(':id')
