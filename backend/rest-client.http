@@ -103,9 +103,30 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjIwMjYtMDQtMT
       "duration": 60,
       "priority": 5,
       "isCompleted": false
+    },
+    {
+      "title": "Task 2",
+      "description": "Description for Task 2",
+      "effort": "medium",
+      "duration": 30,
+      "priority": 2,
+      "isCompleted": false
+    },
+    {
+      "title": "Task 3",
+      "description": "Description for Task 3",
+      "effort": "high",
+      "priority": 3,
+      "duration": 50,
+      "isCompleted": false
     }
   ]
 }
+
+### Auto Schedule Plan
+PATCH http://localhost:3000/plan/auto-schedule/3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjIwMjYtMDQtMTkifQ.eyJzdWIiOiIxIiwiZW1haWwiOiJzaWxseV91c2VyIiwiaWF0IjoxNzc2NjI1NTk5LCJleHAiOjE3NzY2MjY0OTl9.BUzPkAqF_zi285gYPXBnS1op9AuiyheT8dmBhCbyfte9DLvvDTSai6noy7WuTwLsMKQWs4OtcxDjHDPRVWyGz6gtxQvWNBmk36sWAtF3h8gXfB2Gy8pLuT0evWW43zCTOjFeNBzBznT5yq3v014my0bUMowUd_C8SQ_0aocyyF3U7g5gxHFABNlG4-vcukiBZqc6z2rUf8ST8ITUUSf4xZtCB0yVI1_lGacRXY7YYVrnIQ9kc8-pJpn8LniVb_RGP0iMNurjh0GHAJsv40xAejEJdg-h3rNUqS4lHZK1EUC-tVcRgo-qGAREjqsEWLoGT1KwJybazv8bqm27sPJUSw
 
 ### Read All Plans
 GET http://localhost:3000/plan/read-all

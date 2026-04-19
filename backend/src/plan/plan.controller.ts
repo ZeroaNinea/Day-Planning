@@ -52,11 +52,11 @@ export class PlanController {
     return this.planService.delete(Number(id), userId);
   }
 
-  @Patch('auto-schedule')
+  @Patch('auto-schedule/:id')
   async autoSchedule(
     @CurrentUser('sub') userId: number,
-    @Body() dto: { id: number },
+    @Param('id') id: string,
   ) {
-    return this.planService.autoSchedule(dto.id, userId);
+    return this.planService.autoSchedule(Number(id), userId);
   }
 }
