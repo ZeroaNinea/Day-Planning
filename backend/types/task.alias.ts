@@ -6,4 +6,6 @@ export type Task = {
   duration: number; // In minutes.
   effort: 'low' | 'medium' | 'high';
   priority?: number;
+  start?: string;
+  end?: string;
 };

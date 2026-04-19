@@ -23,4 +23,10 @@ export class TaskDto {
 
   @IsNumber()
   priority?: number;
+
+  @IsNumber()
+  start?: string;
+
+  @IsNumber()
+  end?: string;
 }

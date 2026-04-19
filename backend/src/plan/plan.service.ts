@@ -144,7 +144,7 @@ export class PlanService {
     });
 
     const slots = this.getEnergySlots();
-    const scheduled: TaskDto[] & { start: string; end: string }[] = [];
+    const scheduled: TaskDto[] = [];
 
     for (const task of tasks) {
       let placed = false;
