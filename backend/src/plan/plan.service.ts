@@ -76,14 +76,18 @@ export class PlanService {
       where: { id, user: { id: userId } },
     });
 
-    this.validateTasks(dto.tasks);
-
     if (!plan) {
       throw new NotFoundException(' X_X Plan not found.');
     }
 
-    plan.title = dto.title;
-    plan.tasks = dto.tasks;
+    if (dto.tasks) {
+      this.validateTasks(dto.tasks);
+      plan.tasks = dto.tasks;
+    }
+
+    if (dto.title) {
+      plan.title = dto.title;
+    }
 
     return this.planRepository.save(plan);
   }

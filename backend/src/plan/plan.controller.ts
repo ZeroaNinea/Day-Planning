@@ -28,13 +28,13 @@ export class PlanController {
     return this.planService.create(userId, dto);
   }
 
-  @Put('update')
+  @Put('update/:id')
   async update(
     @CurrentUser('sub') userId: number,
-    id: number,
     @Body() dto: UpdateDto,
+    @Param('id') id: string,
   ) {
-    return this.planService.update(id, userId, dto);
+    return this.planService.update(Number(id), userId, dto);
   }
 
   @Get('read-all')
