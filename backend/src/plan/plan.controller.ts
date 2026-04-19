@@ -15,7 +15,8 @@ import { CurrentUser } from '../common/decorators/user.decorator';
 import { CreateDto } from './dto/create.dto';
 
 import { PlanService } from './plan.service';
-import { TaskDto } from './dto/task.dto';
+// import { TaskDto } from './dto/task.dto';
+import { UpdateDto } from './dto/update.dto';
 
 @Controller('plan')
 @UseGuards(AuthGuard('jwt'))
@@ -30,9 +31,10 @@ export class PlanController {
   @Put('update')
   async update(
     @CurrentUser('sub') userId: number,
-    @Body() dto: { id: number; tasks: TaskDto[] },
+    id: number,
+    @Body() dto: UpdateDto,
   ) {
-    return this.planService.update(dto.id, userId, dto.tasks);
+    return this.planService.update(id, userId, dto);
   }
 
   @Get('read-all')

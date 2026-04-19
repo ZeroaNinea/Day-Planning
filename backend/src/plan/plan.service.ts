@@ -11,6 +11,7 @@ import { TaskDto } from './dto/task.dto';
 import { CreateDto } from './dto/create.dto';
 
 import { TimeSlot } from '../../types/time-slot.alias';
+import { UpdateDto } from './dto/update.dto';
 
 @Injectable()
 export class PlanService {
@@ -70,18 +71,18 @@ export class PlanService {
     return this.planRepository.save(plan);
   }
 
-  async update(id: number, userId: number, tasks: TaskDto[]) {
+  async update(id: number, userId: number, dto: UpdateDto) {
     const plan = await this.planRepository.findOne({
       where: { id, user: { id: userId } },
     });
 
-    this.validateTasks(tasks);
+    this.validateTasks(dto.tasks);
 
     if (!plan) {
       throw new NotFoundException(' X_X Plan not found.');
     }
 
-    plan.tasks = tasks;
+    plan.tasks = dto.tasks;
 
     return this.planRepository.save(plan);
   }
