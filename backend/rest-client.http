@@ -52,3 +52,41 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEifQ.eyJzdWI
 ### Get Profile
 GET http://localhost:3000/auth/profile
 Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEifQ.eyJzdWIiOiI4YWNmNjc5MS04NzEyLTQ2YTUtYTkwMy02MGY3NjcwMWU3NGEiLCJlbWFpbCI6InNpbGx5LnVzZXJAZW1haWwuY29tIiwiaWF0IjoxNzcxOTQyNTAxLCJleHAiOjE3NzE5NDM0MDF9.cBn3WjnjiTu9E1B4rpRd0-cv6nEO8aghytBeHe7kS0zBrXbLQLXfrmi-qcGfEf5oUXSF44HH5K0uIJld-6B8PFDEs54VgH1NpoMULoiFP68O3Ue67Cr_YpOzUVBa96Hnu2H6uncgl6t5YZ30gdgoS-f0gF5LN4fCeN2FuqAvTe1M86_THT4QKziatU4Sgomt7ZAkBSPdC0Ua11AurKvc8ziXvERLR3yfUwUOFzeTH-IjZpgkq3Pd9fPlHN6_mfD4_ei0s3uAFzzgvBSi_zZ2cUboN1RzuLYENzjQJQMijnabwyrTJGAfPJdxt0Ue9hwPxvfBBEuxNUw7Biznf_HvWw
+
+### Create a New Plan
+POST http://localhost:3000/plan/create
+Authorrization:
+Content-Type: application/json
+
+{
+  "title": "My Plan",
+  "tasks": [
+    {
+      "title": "Task 1",
+      "description": "Description for Task 1",
+      "startTime": "09:00",
+      "endTime": "10:00",
+      "effort": "low",
+      "priority": "medium",
+      "isCompleted": false
+    },
+    {
+      "title": "Task 2",
+      "description": "Description for Task 2",
+      "startTime": "10:00",
+      "endTime": "11:00",
+      "effort": "medium",
+      "priority": "high",
+      "isCompleted": false
+    },
+    {
+      "title": "Task 3",
+      "description": "Description for Task 3",
+      "startTime": "11:00",
+      "endTime": "12:00",
+      "effort": "high",
+      "priority": "low",
+      "isCompleted": false
+    }
+  ]
+}
