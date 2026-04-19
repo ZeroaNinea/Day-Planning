@@ -23,12 +23,12 @@ export class PlanController {
   constructor(private planService: PlanService) {}
 
   @Post('create')
-  create(@CurrentUser('sub') userId: number, @Body() dto: CreateDto) {
+  async create(@CurrentUser('sub') userId: number, @Body() dto: CreateDto) {
     return this.planService.create(userId, dto.tasks);
   }
 
   @Put('update')
-  update(
+  async update(
     @CurrentUser('sub') userId: number,
     @Body() dto: { id: number; tasks: TaskDto[] },
   ) {
@@ -36,22 +36,22 @@ export class PlanController {
   }
 
   @Get('read-all')
-  readAll(@CurrentUser('sub') userId: number) {
+  async readAll(@CurrentUser('sub') userId: number) {
     return this.planService.readAll(userId);
   }
 
   @Get('read')
-  read(@CurrentUser('sub') userId: number, @Body() dto: { id: number }) {
+  async read(@CurrentUser('sub') userId: number, @Body() dto: { id: number }) {
     return this.planService.read(userId, dto.id);
   }
 
   @Delete(':id')
-  delete(@CurrentUser('sub') userId: number, @Param('id') id: string) {
+  async delete(@CurrentUser('sub') userId: number, @Param('id') id: string) {
     return this.planService.delete(Number(id), userId);
   }
 
   @Patch('auto-schedule')
-  autoSchedule(
+  async autoSchedule(
     @CurrentUser('sub') userId: number,
     @Body() dto: { id: number },
   ) {
