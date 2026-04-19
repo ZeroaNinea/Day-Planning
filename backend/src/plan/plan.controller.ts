@@ -39,7 +39,6 @@ export class PlanController {
 
   @Get('read-all')
   async readAll(@CurrentUser('sub') userId: number) {
-    console.log('read-all called', userId);
     return this.planService.readAll(userId);
   }
 
