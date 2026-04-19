@@ -9,13 +9,7 @@ import { Repository } from 'typeorm';
 import { Plan } from '../entities/plan.entity';
 import { TaskDto } from './dto/task.dto';
 
-type Energy = 'low' | 'medium' | 'high';
-
-type TimeSlot = {
-  start: number; // minutes
-  end: number;
-  energy: Energy;
-};
+import { TimeSlot } from '../../types/time-slot.alias';
 
 @Injectable()
 export class PlanService {
