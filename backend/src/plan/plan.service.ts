@@ -8,6 +8,7 @@ import { Repository } from 'typeorm';
 
 import { Plan } from '../entities/plan.entity';
 import { TaskDto } from './dto/task.dto';
+import { CreateDto } from './dto/create.dto';
 
 import { TimeSlot } from '../../types/time-slot.alias';
 
@@ -56,13 +57,14 @@ export class PlanService {
     return false;
   }
 
-  async create(userId: number, tasks: TaskDto[] | undefined) {
-    this.validateTasks(tasks);
+  async create(userId: number, dto: CreateDto) {
+    this.validateTasks(dto.tasks);
 
     const plan = this.planRepository.create({
       user: { id: userId },
+      title: dto.title,
       date: new Date().toISOString().split('T')[0],
-      tasks,
+      tasks: dto.tasks,
     });
 
     return this.planRepository.save(plan);

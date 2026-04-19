@@ -24,8 +24,7 @@ export class PlanController {
 
   @Post('create')
   async create(@CurrentUser('sub') userId: number, @Body() dto: CreateDto) {
-    console.log('create called', userId, dto);
-    return this.planService.create(userId, dto.tasks);
+    return this.planService.create(userId, dto);
   }
 
   @Put('update')
