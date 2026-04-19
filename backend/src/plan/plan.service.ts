@@ -82,6 +82,7 @@ export class PlanService {
       throw new NotFoundException(' X_X Plan not found.');
     }
 
+    plan.title = dto.title;
     plan.tasks = dto.tasks;
 
     return this.planRepository.save(plan);
