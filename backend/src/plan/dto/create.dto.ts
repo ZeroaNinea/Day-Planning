@@ -1,5 +1,5 @@
 import { IsArray, ValidateNested } from 'class-validator';
-import { Type } from 'class-transformer/types/decorators';
+import { Type } from 'class-transformer';
 import { TaskDto } from './task.dto';
 
 export class CreateDto {
