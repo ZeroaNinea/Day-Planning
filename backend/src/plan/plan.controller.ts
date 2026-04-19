@@ -47,7 +47,7 @@ export class PlanController {
     return this.planService.read(userId, Number(id));
   }
 
-  @Delete(':id')
+  @Delete('delete/:id')
   async delete(@CurrentUser('sub') userId: number, @Param('id') id: string) {
     return this.planService.delete(Number(id), userId);
   }
