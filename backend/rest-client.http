@@ -88,6 +88,25 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjIwMjYtMDQtMT
   ]
 }
 
+### Update Plan
+PUT http://localhost:3000/plan/update/3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjIwMjYtMDQtMTkifQ.eyJzdWIiOiIxIiwiZW1haWwiOiJzaWxseV91c2VyIiwiaWF0IjoxNzc2NjI1NTk5LCJleHAiOjE3NzY2MjY0OTl9.BUzPkAqF_zi285gYPXBnS1op9AuiyheT8dmBhCbyfte9DLvvDTSai6noy7WuTwLsMKQWs4OtcxDjHDPRVWyGz6gtxQvWNBmk36sWAtF3h8gXfB2Gy8pLuT0evWW43zCTOjFeNBzBznT5yq3v014my0bUMowUd_C8SQ_0aocyyF3U7g5gxHFABNlG4-vcukiBZqc6z2rUf8ST8ITUUSf4xZtCB0yVI1_lGacRXY7YYVrnIQ9kc8-pJpn8LniVb_RGP0iMNurjh0GHAJsv40xAejEJdg-h3rNUqS4lHZK1EUC-tVcRgo-qGAREjqsEWLoGT1KwJybazv8bqm27sPJUSw
+
+{
+  "title": "Updated Plan",
+  "tasks": [
+    {
+      "title": "Updated Task",
+      "description": "New description",
+      "effort": "high",
+      "duration": 60,
+      "priority": 5,
+      "isCompleted": false
+    }
+  ]
+}
+
 ### Read All Plans
 GET http://localhost:3000/plan/read-all
-Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjIwMjYtMDQtMTkifQ.eyJzdWIiOiIxIiwiZW1haWwiOiJzaWxseV91c2VyIiwiaWF0IjoxNzc2NjE2MTY0LCJleHAiOjE3NzY2MTcwNjR9.HzeFTIBCSr-WBT3m-6awwxNNikYzwju_X8bCqVI7J6C47ZLnhXaVcgFQyC1ytbnfgQQBSoddNm9yqD4IpLMTyq25RW-kUoYV8sRKbTF5wTLiDtleoucYmbKwYa6Bh-7Xxq1MyZwNUd7K7JHZGIBSraDH-3JECuRm1XHDoxxRySnXuD-xzO36WMo4nmAOkG0HJ5y39bMakBAknECSetE4T7JY6vJcAFxPVv4NydNuqxUrKg7eIE2eIbnCbFp3m0Ty9pRdp_mMiIrZR2K14fuBGcUlrZo0vsJi11ApZUIiTk-EsYVFmJPNxPrEvzPLJjHZAivI5NMwK43SWzD6QGQLBA
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjIwMjYtMDQtMTkifQ.eyJzdWIiOiIxIiwiZW1haWwiOiJzaWxseV91c2VyIiwiaWF0IjoxNzc2NjI1NTk5LCJleHAiOjE3NzY2MjY0OTl9.BUzPkAqF_zi285gYPXBnS1op9AuiyheT8dmBhCbyfte9DLvvDTSai6noy7WuTwLsMKQWs4OtcxDjHDPRVWyGz6gtxQvWNBmk36sWAtF3h8gXfB2Gy8pLuT0evWW43zCTOjFeNBzBznT5yq3v014my0bUMowUd_C8SQ_0aocyyF3U7g5gxHFABNlG4-vcukiBZqc6z2rUf8ST8ITUUSf4xZtCB0yVI1_lGacRXY7YYVrnIQ9kc8-pJpn8LniVb_RGP0iMNurjh0GHAJsv40xAejEJdg-h3rNUqS4lHZK1EUC-tVcRgo-qGAREjqsEWLoGT1KwJybazv8bqm27sPJUSw
