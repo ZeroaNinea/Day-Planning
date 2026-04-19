@@ -7,6 +7,7 @@ import {
   Body,
   Delete,
   Param,
+  Put,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 
@@ -26,7 +27,7 @@ export class PlanController {
     return this.planService.create(userId, dto.tasks);
   }
 
-  @Patch('update')
+  @Put('update')
   update(
     @CurrentUser('sub') userId: number,
     @Body() dto: { id: number; tasks: TaskDto[] },
@@ -47,5 +48,13 @@ export class PlanController {
   @Delete(':id')
   delete(@CurrentUser('sub') userId: number, @Param('id') id: string) {
     return this.planService.delete(Number(id), userId);
+  }
+
+  @Patch('auto-schedule')
+  autoSchedule(
+    @CurrentUser('sub') userId: number,
+    @Body() dto: { id: number },
+  ) {
+    return this.planService.autoSchedule(dto.id, userId);
   }
 }

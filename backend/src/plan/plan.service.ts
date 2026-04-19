@@ -131,7 +131,7 @@ export class PlanService {
 
     const tasks = [...plan.tasks];
 
-    // Sort: priority DESC, effort DESC
+    // Sort: priority DESC, effort DESC.
     const effortOrder = { high: 3, medium: 2, low: 1 };
 
     tasks.sort((a, b) => {
